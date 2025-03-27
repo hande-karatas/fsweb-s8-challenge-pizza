@@ -2,32 +2,29 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import workintech from '/workintech.svg'
 import './App.css'
+import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 
-function App() {
-  const [count, setCount] = useState(0)
+import Home from "./components/Home";
+import OrderPizza from "./components/OrderPizza";
+import Success from './components/Success';
+import NavController from "./components/NavController"
+
+function App() {  
 
   return (
     <>
-      <div>
-        <a href="https://github.com/Workintech/fsweb-s7-challenge-pizza" target="_blank">
-          <img src={workintech} className="logo" alt="Workintech logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Workintech + 🍕 + Hande Karataş</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          Absolute Acı Pizza sayısı {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Workintech or Pizza logos to learn more
-      </p>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/orderpizza">
+          <OrderPizza />
+        </Route>
+        <Route path="/success">
+          <Success />
+        </Route>
+      </Switch>
+      <NavController />
     </>
   )
 }
