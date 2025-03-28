@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import styled from 'styled-components';
 
 const Card = styled.div`
@@ -51,6 +52,12 @@ const Button = styled.div`
 
 
 function OrderBox() {
+    const history = useHistory();
+    
+    function handleClick() {
+        history.push("/success")
+    }
+
   return (
     <div><Card>
             <Title>Sipariş Toplamı</Title>
@@ -63,7 +70,7 @@ function OrderBox() {
                 <p>110.00 ₺</p>
             </Total>            
         </Card>
-        <Button>SİPARİŞ VER</Button>
+        <Button onClick={handleClick}>SİPARİŞ VER</Button>
         </div>
   )
 }
