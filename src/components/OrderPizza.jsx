@@ -1,9 +1,57 @@
-import React from 'react'
+import React from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
+import Logo from './Logo';
+import Order from './Order';
+import {pizza} from "../data.js";
 
-function OrderPizza() {
+const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+  }
+
+  html, body, #root {
+    height: 100%;
+    text-align: left;
+    color: #292929;
+  }
+`;
+
+const FixedHeader = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 25%;
+  background-color: #CE2829;
+  padding: 1rem 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Content = styled.div`
+  padding-top: 40%;
+  background-color: beige;
+  min-height: 200vh;
+  width: 60vh;
+`;
+
+function OrderPizza(props) {
+  
   return (
-    <div>OrderPizza</div>
-  )
+    <>
+      <GlobalStyle />
+      <FixedHeader>
+        <Logo />
+      </FixedHeader>
+      <Content>
+        <Order siparis={pizza}/>
+      </Content>
+    </>
+  );
 }
 
-export default OrderPizza
+export default OrderPizza;

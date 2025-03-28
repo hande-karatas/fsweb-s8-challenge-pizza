@@ -2,9 +2,9 @@ import React from 'react'
 import styled, { createGlobalStyle } from "styled-components";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import backGround from "D:/Education/Workintech/fsweb-s8-challenge-pizza/images/iteration-1-images/home-banner.png";
+import Logo from "./Logo"
 
-const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Chelsea+Market&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+const GlobalStyle = createGlobalStyle`  
   html, body {
     margin: 0;
     padding: 0;
@@ -17,16 +17,13 @@ const GlobalStyle = createGlobalStyle`
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    
+     @media (max-width: 768px) {
+      background-position: top;
+      background-size: auto 120%;
+    }
   }
 `;
-
-const Logo = styled.img`
-    position: absolute;
-    top: 6rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20rem;
-`
 
 const Container = styled.div`
   display: flex;
@@ -42,6 +39,10 @@ const WelcomeText = styled.h1`
     color: white;
     font-size: 5rem;
     font-weight: lighter;
+
+    @media (max-width: 768px) {
+    font-size: 4rem;
+  }
 `
 
 const Button = styled.button`
@@ -63,7 +64,7 @@ function Home() {
   return (
     <div>
       <GlobalStyle />
-      <Logo src="../images/iteration-1-images/logo.svg" />
+      <Logo/>
       <Container>
         <WelcomeText>
           KOD ACIKTIRIR
