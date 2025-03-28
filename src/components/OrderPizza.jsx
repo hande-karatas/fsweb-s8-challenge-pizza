@@ -33,10 +33,9 @@ const FixedHeader = styled.div`
 `;
 
 const Content = styled.div`
-  padding-top: 40%;
-  background-color: beige;
-  min-height: 200vh;
+  padding-top: 40%;    
   width: 60vh;
+  padding-bottom: 5rem;
 `;
 
 function OrderPizza(props) {

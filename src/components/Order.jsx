@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import GeneralSelection from './GeneralSelection';
 import Extras from './Extras';
 import NameNotes from './NameNotes';
+import QtyOrderButton from './QtyOrderButton';
 
 const Title = styled.h3`
     font-family: Barlow;
@@ -44,6 +45,13 @@ const Explanation = styled.p`
     font-weight: lighter;
     padding-bottom: 1.5rem;
 `
+const StraightLine = styled.div`
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: .1px solid #5F5F5F;
+    height: 0;
+    width: 100%;
+`
 
 function Order(props) {
     const {siparis} = props;
@@ -61,6 +69,10 @@ function Order(props) {
         <GeneralSelection />
         <Extras siparis={siparis}></Extras>
         <NameNotes></NameNotes>
+        <StraightLine/>
+        <QtyOrderButton></QtyOrderButton> 
+
+
     </div>
   )
 }

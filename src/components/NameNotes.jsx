@@ -20,7 +20,7 @@ const Text = styled.p`
     padding-bottom: 0;
 `;
 const StyledInput = styled(Input)`
-  width: 70%;
+  width: 50%;
   height: 2rem;
   font-size: 1rem;
   padding: 0.5rem;

@@ -30,29 +30,36 @@ const DoughDiv = styled.div`
     text-align: left;
 `
 
+const Span = styled.span`
+  color: #CE2829;
+`
+const StyledLabel = styled(Label)`
+  padding-left: 1rem;
+`
+
 
 function GeneralSelection() {
   return (
     <Wrapper>
         <Size>
-            <Title>Boyut Seç*</Title>            
+            <Title>Boyut Seç<Span>*</Span></Title>            
             <FormGroup check>
             <Input id="küçük" name="radio" type="radio"/>            
-            <Label for="küçük" check>        Küçük</Label>
+            <StyledLabel for="küçük" check>Küçük</StyledLabel>
             </FormGroup>
             <br/>
             <FormGroup check>
             <Input id="orta" name="radio" type="radio"/>            
-            <Label for="orta" check>        Orta</Label>
+            <StyledLabel for="orta" check>Orta</StyledLabel>
             </FormGroup>
             <br/>
             <FormGroup check>
             <Input id="büyük" name="radio" type="radio"/>            
-            <Label for="büyük" check>        Büyük</Label>
+            <StyledLabel for="büyük" check>Büyük</StyledLabel>
             </FormGroup>
         </Size>
         <DoughDiv>
-            <Title>Hamur Seç*</Title>
+            <Title>Hamur Seç<Span>*</Span></Title>
             <Dough/>
         </DoughDiv>
     </Wrapper>
