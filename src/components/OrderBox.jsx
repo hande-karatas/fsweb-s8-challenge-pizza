@@ -79,7 +79,7 @@ function OrderBox() {
                 <p>110.00 ₺</p>
             </Total>            
         </Card>
-        <Button onClick={handleSubmit}>SİPARİŞ VER</Button>
+        <Button data-cy="submit-button" onClick={handleSubmit} >SİPARİŞ VER</Button>
         </div>
   )
 }

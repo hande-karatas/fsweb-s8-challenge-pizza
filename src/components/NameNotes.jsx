@@ -82,6 +82,7 @@ function NameNotes(props) {
       <StyledInput
           id="username"
           name="username"
+          data-cy="input-username"
           placeholder="Lütfen isminizi giriniz."
           type="text"
           onChange={handleChange}
