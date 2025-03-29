@@ -44,46 +44,40 @@ const errorMessages = {
 }
 
 function Extras(props) {
-    const { siparis } = props;
+    //hooks
+    const { siparis, formData, setFormData } = props;
     const [errors, setErrors] = useState({
         min: true,
         max: false
     });
-    const [isValid, setIsValid] = useState(false);
-    const [formData, setFormData] = useState({ extras: [] });
 
-    
-    function onChangeFn(event) {
+    //helper
+    function handleChange(event) {
+        const name = event.target.name;
         const value = event.target.value;
     
-        setFormData(prev => {
-            const currentValues = prev.extras;
-            let newExtras;
+        let updatedExtras;
     
-            if (currentValues.includes(value)) {
-                newExtras = currentValues.filter(item => item !== value);
-            } else {
-                newExtras = [...currentValues, value];
-            }    
-                        
-            const newErrors = {
-                min: newExtras.length < 4,
-                max: newExtras.length > 10
-            };
-            setErrors(newErrors);
+        if (formData[name].includes(value)) {
+            updatedExtras = formData[name].filter(item => item !== value);
+        } else {
+            updatedExtras = [...formData[name], value];
+        }
     
-            return {
-                ...prev,
-                extras: newExtras
-            };
-            setIsValid(newExtras.length >= 4 && newExtras.length <= 10);
-        });
-        
-
+        const newFormData = { ...formData, [name]: updatedExtras };
+        setFormData(newFormData);
+    
+        const newErrors = {
+            min: updatedExtras.length < 4,
+            max: updatedExtras.length > 10
+        };
+        setErrors(newErrors); 
+        if (!newErrors.min && !newErrors.max) {
+            console.log(newFormData);
+        }           
     }
     
-   
-
+    //template
     return (
         <div>
             <Title>Ek Malzemeler</Title>
@@ -94,7 +88,7 @@ function Extras(props) {
                         <CheckboxItem key={index}>
                             <Input 
                                 type="checkbox"
-                                onChange={onChangeFn}                                
+                                onChange={handleChange}                                
                                 name="extras"
                                 id={index} 
                                 value={extra.toLowerCase()}

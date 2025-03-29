@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components'
 import GeneralSelection from './GeneralSelection';
 import Extras from './Extras';
@@ -54,6 +54,14 @@ const StraightLine = styled.div`
 `
 
 function Order(props) {
+    const [formData, setFormData] = useState({
+        size: "",
+        dough: "",
+        extras: [],
+        username: "",
+        siparisnotu: "",
+        quantity: 1
+    });
     const {siparis} = props;
   return (
     <div>
@@ -66,11 +74,11 @@ function Order(props) {
             </Wrapper>
         </PriceAndInfo>           
         <Explanation>{siparis.explanation}</Explanation>
-        <GeneralSelection />
-        <Extras siparis={siparis}></Extras>
-        <NameNotes></NameNotes>
+        <GeneralSelection formData={formData} setFormData={setFormData} />
+        <Extras siparis={siparis} formData={formData} setFormData={setFormData} ></Extras>
+        <NameNotes formData={formData} setFormData={setFormData} ></NameNotes>
         <StraightLine/>
-        <QtyOrderButton></QtyOrderButton> 
+        <QtyOrderButton formData={formData} setFormData={setFormData} ></QtyOrderButton> 
 
 
     </div>

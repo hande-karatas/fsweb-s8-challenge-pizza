@@ -48,50 +48,54 @@ const StyledTextArea = styled(Input)`
 `;
 
 
-function NameNotes() {
+function NameNotes(props) {
+  //hooks
+  const { formData, setFormData } = props;
+  const [errors, setErrors] = useState(true);
 
-    const [errors, setErrors] = useState(true);
-    const [isValid, setIsValid]  = useState(false);
 
-    function handleChange(event) {
-        if (event.target.value.length > 3) {
-            setErrors(false);
-            setIsValid(false)
-        } else {
-            setErrors(true);
-            setIsValid(true)
-        }
+  function handleChange(event) {
+    const {name, value} = event.target;
+
+    if (name === "username") {
+      if (value.length >= 3) {
+        setErrors(false);
+        const newFormData = {...formData, [name]: value};
+        setFormData(newFormData);
+        console.log(newFormData);        
+    } else {
+        setErrors(true);               
     }
+
+    } else {
+      newFormData = {...formData, [name]: value};
+      setFormData(updatedFormData);
+    }
+    
+  }
   return (
-    <div>
-        
-        <FormGroup>
-        <StyledLabel for="username">İsim</StyledLabel>
-        <StyledInput
-            id="username"
-            name="username"
-            placeholder="Lütfen isminizi giriniz."
-            type="text"
-            onChange={handleChange}
-        />
-        </FormGroup>
+    <div>        
+      <FormGroup>
+      <StyledLabel for="username">İsim</StyledLabel>
+      <StyledInput
+          id="username"
+          name="username"
+          placeholder="Lütfen isminizi giriniz."
+          type="text"
+          onChange={handleChange}
+      />
+      </FormGroup>
+      <Text>{errors ? "İsminiz en az üç karakter içermeli." : ""}</Text>
 
-        <Text>{errors ? "İsminiz en az üç karakter içermeli." : ""}</Text>
-        
-
-        
-        
-        <FormGroup>
-        <StyledLabel for="siparisnotu">Sipariş Notu</StyledLabel>
-             <StyledTextArea
-                id="siparisnotu"
-                name="siparisnotu"
-                type="textarea"
-                placeholder="Siparişine eklemek istediğin bir not var mı?"                
-            />
-        </FormGroup>       
-        
-
+      <FormGroup>
+      <StyledLabel for="siparisnotu">Sipariş Notu</StyledLabel>
+            <StyledTextArea
+              id="siparisnotu"
+              name="siparisnotu"
+              type="textarea"
+              placeholder="Siparişine eklemek istediğin bir not var mı?"                
+          />
+      </FormGroup>         
     </div>
   )
 }

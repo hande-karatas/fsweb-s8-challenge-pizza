@@ -7,7 +7,6 @@ import {
     DropdownMenu,
     DropdownItem,
   } from 'reactstrap';
-  import Dough from './Dough';
 
 const Wrapper = styled.div`
     display: flex;    
@@ -36,31 +35,62 @@ const Span = styled.span`
 const StyledLabel = styled(Label)`
   padding-left: 1rem;
 `
+const Select = styled.select` 
+  height: 2rem;
+  font-size: 1rem;
+  padding: 0.1rem 0.2rem;
+  font-family: 'Barlow', sans-serif;
+  color: #5F5F5F;
+  font-weight: lighter;
+  border: 1px solid #5F5F5F;
+  border-radius: 4px; 
+  
+`
+const Option = styled.option`
+  font-size: 0.95rem; 
+  color: #292929;
+`
 
 
-function GeneralSelection() {
+function GeneralSelection(props) {
+  //hoooks
+  const {formData, setFormData} = props;
+
+  //helper
+  function handleChange(event) {
+    const newFormData = {...formData, [event.target.name]: event.target.value};
+    setFormData(newFormData)
+    console.log(newFormData)
+  }
+
+  //template
   return (
     <Wrapper>
         <Size>
             <Title>Boyut Seç<Span>*</Span></Title>            
             <FormGroup check>
-            <Input id="küçük" name="radio" type="radio"/>            
+            <Input id="küçük" name="size" type="radio" value="küçük" onClick={handleChange} />            
             <StyledLabel for="küçük" check>Küçük</StyledLabel>
             </FormGroup>
             <br/>
             <FormGroup check>
-            <Input id="orta" name="radio" type="radio"/>            
+            <Input id="orta" name="size" type="radio" value="orta" onClick={handleChange} />            
             <StyledLabel for="orta" check>Orta</StyledLabel>
             </FormGroup>
             <br/>
             <FormGroup check>
-            <Input id="büyük" name="radio" type="radio"/>            
+            <Input id="büyük" name="size" type="radio" value="büyük" onClick={handleChange} />            
             <StyledLabel for="büyük" check>Büyük</StyledLabel>
             </FormGroup>
         </Size>
         <DoughDiv>
-            <Title>Hamur Seç<Span>*</Span></Title>
-            <Dough/>
+          <Title>Hamur Seç<Span>*</Span></Title>
+          <Select name="dough" defaultValue="" onChange={handleChange}>
+            <Option value="" hidden>Hamur Kalınlığı</Option>
+            <Option value="incecik" >İncecik</Option>
+            <Option value="ince" >İnce</Option>
+            <Option value="kalın" >Kalın</Option>
+          </Select>
         </DoughDiv>
     </Wrapper>
   )
