@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
-
+import styled from 'styled-components';
+import { useEffect } from 'react';
 const Wrapper = styled.div`
   display: flex;
 `
@@ -46,8 +46,9 @@ const Plus = styled(Button)`
     background-color: #FDC913;  
 `
 
-function QtyCounter() {
+function QtyCounter(props) {
   const [quantity, setQuantity] = useState(1)
+  const { setFormData, formData } = props;
 
   const handleMinus = () => {
     setQuantity(prev => Math.max(1, prev - 1))
@@ -56,6 +57,12 @@ function QtyCounter() {
   const handlePlus = () => {
     setQuantity(prev => prev + 1)
   }
+
+  useEffect(() => {
+    const newFormData = ({...formData, quantity: quantity })
+    setFormData(newFormData);
+    console.log(newFormData)
+  }, [quantity]);
 
   return (
     <Wrapper>

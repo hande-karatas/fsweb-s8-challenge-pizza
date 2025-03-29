@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import styled from 'styled-components';
+import axios from "axios";
 
 const Card = styled.div`
     display: flex;
@@ -52,10 +53,18 @@ const Button = styled.div`
 
 
 function OrderBox() {
+    //hooks
+    const [order, setOrder] = useState(null);
     const history = useHistory();
     
-    function handleClick() {
-        history.push("/success")
+    function handleSubmit() {        
+        axios.post("https://reqres.in/api/pizza", FormData)
+        .then(response=>{
+            setOrder(response.data)
+            console.log(response.data)
+            history.push("/success")
+        })
+        .catch(error=>console.log(error.message))
     }
 
   return (
@@ -70,7 +79,7 @@ function OrderBox() {
                 <p>110.00 ₺</p>
             </Total>            
         </Card>
-        <Button onClick={handleClick}>SİPARİŞ VER</Button>
+        <Button onClick={handleSubmit}>SİPARİŞ VER</Button>
         </div>
   )
 }

@@ -17,7 +17,6 @@ const GlobalStyle = createGlobalStyle`
     color: #292929;
   }
 `;
-
 const FixedHeader = styled.div`
   position: fixed;
   top: 0;
@@ -28,9 +27,25 @@ const FixedHeader = styled.div`
   padding: 1rem 0;
   z-index: 1000;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 `;
+const HeaderTextContainer = styled.div`
+  width: 62vh;
+  padding-bottom: 1rem;
+`;
+const HeaderText = styled.h1`
+  color: white;
+  font-size: 1.2rem;
+  font-family: Barlow;
+
+  & span {
+    font-weight: lighter;
+  }
+`;
+
+
 
 const Content = styled.div`
   padding-top: 40%;    
@@ -39,12 +54,14 @@ const Content = styled.div`
 `;
 
 function OrderPizza(props) {
-  
   return (
     <>
       <GlobalStyle />
       <FixedHeader>
         <Logo />
+        <HeaderTextContainer>
+          <HeaderText><span>Anasayfa - </span>Sipariş Oluştur</HeaderText>
+        </HeaderTextContainer>
       </FixedHeader>
       <Content>
         <Order siparis={pizza}/>

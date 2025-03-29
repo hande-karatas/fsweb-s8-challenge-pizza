@@ -22,12 +22,13 @@ const OrderCard = styled(OrderBox)`
     border: 1px solid green;
 `
 
-function QtyOrderButton() {
+function QtyOrderButton(props) {
+    const { formData, setFormData } = props;
   return (
     <div>
         <Wrapper>
-            <Counter></Counter>
-            <OrderCard></OrderCard>
+            <Counter formData={formData} setFormData={setFormData} ></Counter>
+            <OrderCard formData={formData}></OrderCard>
         </Wrapper>
     </div>
   )

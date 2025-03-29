@@ -38,6 +38,7 @@ const StyledTextArea = styled(Input)`
   font-size: 1rem;
   padding: 1.3rem;
   resize: none;
+  font-family: 'Barlow', sans-serif;
 
   &::placeholder {
     font-family: 'Barlow', sans-serif;
@@ -63,14 +64,15 @@ function NameNotes(props) {
         const newFormData = {...formData, [name]: value};
         setFormData(newFormData);
         console.log(newFormData);        
-    } else {
-        setErrors(true);               
+      } else {
+          setErrors(true);               
+      }
     }
-
-    } else {
-      newFormData = {...formData, [name]: value};
-      setFormData(updatedFormData);
-    }
+    if (name === "siparisnotu") {
+      const newFormData = { ...formData, [name]: value };
+      setFormData(newFormData);
+      console.log(newFormData);
+    }    
     
   }
   return (
@@ -93,7 +95,8 @@ function NameNotes(props) {
               id="siparisnotu"
               name="siparisnotu"
               type="textarea"
-              placeholder="Siparişine eklemek istediğin bir not var mı?"                
+              placeholder="Siparişine eklemek istediğin bir not var mı?" 
+              onChange={handleChange}               
           />
       </FormGroup>         
     </div>
