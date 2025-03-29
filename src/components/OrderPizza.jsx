@@ -30,10 +30,17 @@ const FixedHeader = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  @media (max-width: 768px) {
+      height: 15%;
+    }
+  
 `;
 const HeaderTextContainer = styled.div`
   width: 62vh;
   padding-bottom: 1rem;
+  @media (max-width: 768px) {
+      width: 80%;
+    }
 `;
 const HeaderText = styled.h1`
   color: white;
@@ -43,14 +50,17 @@ const HeaderText = styled.h1`
   & span {
     font-weight: lighter;
   }
+  @media (max-width: 768px) {
+      font-size: 1rem;
+    }  
 `;
-
-
-
 const Content = styled.div`
   padding-top: 40%;    
   width: 60vh;
   padding-bottom: 5rem;
+  @media (max-width: 768px) {
+      width: 60%;
+    }
 `;
 
 function OrderPizza(props) {

@@ -5,7 +5,7 @@
 describe("order page", () => {
     describe("input: username", () => {
         beforeEach(() => {
-            cy.visit("http://localhost:5174/")
+            cy.visit("http://localhost:5173/orderPizza")
         })
         it("invalid username", () => {
             //act
@@ -18,7 +18,7 @@ describe("order page", () => {
             //act
             cy.get('[data-cy="input-username"]').type("hande");
             //assess
-            cy.contains('İsminiz en az üç karakter içermeli.').should('not.be.visible');
+            cy.contains('İsminiz en az üç karakter içermeli.').should('not.exist');
             // cy.get('[data-cy="submit-button"]').should('be.disabled');
         })
     })
@@ -30,22 +30,28 @@ describe("order page", () => {
             //act
             cy.get('[type="checkbox"]').check('ananas');
             cy.get('[type="checkbox"]').check('sosis');
-            cy.get('[type="checkbox"]').check('domates');
-            //assert
+            cy.get('[type="checkbox"]').check('domates');      
             //assess
             cy.contains('En az 4 malzeme seçiniz.').should('be.visible');
         })
-        it("check 4-10", () => {
+        it("check more than 10", () => {
             //act
+            cy.get('[type="checkbox"]').check('pepperoni');
+            cy.get('[type="checkbox"]').check('tavuk izgara'); // "Izgara" değil, "ızgara"!
+            cy.get('[type="checkbox"]').check('mısır');
+            cy.get('[type="checkbox"]').check('sarımsak');
             cy.get('[type="checkbox"]').check('ananas');
             cy.get('[type="checkbox"]').check('sosis');
-            cy.get('[type="checkbox"]').check('domates');
-            cy.get('[type="checkbox"]').check('jalepeno');
+            cy.get('[type="checkbox"]').check('soğan');
+            cy.get('[type="checkbox"]').check('sucuk');
             cy.get('[type="checkbox"]').check('biber');
             cy.get('[type="checkbox"]').check('kabak');
-            //assert
-            //assess
-            cy.contains('En az 4 malzeme seçiniz.').should('not.be.visible');
+            cy.get('[type="checkbox"]').check('kanada jambonu');
+            cy.get('[type="checkbox"]').check('domates');
+            
+            //assess 
+            cy.get('[data-cy="extras-warning"]').should('contain', 'En fazla 10 malzeme');
+
         })
     })
     beforeEach(() => {

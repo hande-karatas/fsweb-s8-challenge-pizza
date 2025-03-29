@@ -24,7 +24,7 @@ function App() {
           <Success />
         </Route>
       </Switch>
-      <NavController />
+      {/* <NavController /> */}
     </>
   )
 }

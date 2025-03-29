@@ -11,7 +11,6 @@ const Title = styled.h3`
     padding-top: 2rem;
     padding-bottom: 1rem;
 `;
-
 const Text = styled.p`
     text-align: left;
     font-family: Barlow;
@@ -19,14 +18,14 @@ const Text = styled.p`
     font-weight: 400;
     padding-bottom: 1.5rem;
 `;
-
-// 👇 3 kolonlu grid yapısı
 const CheckboxGrid = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 kolon */
     gap: 0.75rem 1.5rem; /* satır ve kolon boşlukları */
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr); /* 3 kolon */
+    }
 `;
-
 const CheckboxItem = styled.div`
     display: flex;
     align-items: center;
@@ -37,7 +36,6 @@ const CheckboxItem = styled.div`
     font-weight: bold;    
     color: #5F5F5F
 `;
-
 const errorMessages = {
     min: "En az 4 malzeme seçiniz.",
     max: "En fazla 10 malzeme seçebilirsiniz."
@@ -81,7 +79,7 @@ function Extras(props) {
     return (
         <div>
             <Title>Ek Malzemeler</Title>
-            <Text>{errors.min ? errorMessages.min : errors.max ? errorMessages.max : "" } 5₺ </Text>            
+            <Text data-cy="extras-warning">{errors.min ? errorMessages.min : errors.max ? errorMessages.max : "" } 5₺ </Text>            
             <FormGroup check>
                 <CheckboxGrid>
                     {siparis.extras.map((extra, index) => (

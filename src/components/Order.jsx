@@ -61,7 +61,7 @@ function Order(props) {
         username: "",
         siparisnotu: "",
         quantity: 1
-    });
+    });    
     const {siparis} = props;
   return (
     <div>
