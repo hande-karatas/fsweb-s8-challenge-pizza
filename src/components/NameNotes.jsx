@@ -63,7 +63,7 @@ function NameNotes(props) {
         setErrors(false);
         const newFormData = {...formData, [name]: value};
         setFormData(newFormData);
-        console.log(newFormData);        
+        // console.log(newFormData);        
       } else {
           setErrors(true);       
           const newFormData = {...formData, [name]: ""};
@@ -73,7 +73,7 @@ function NameNotes(props) {
     if (name === "siparisnotu") {
       const newFormData = { ...formData, [name]: value };
       setFormData(newFormData);
-      console.log(newFormData);
+      // console.log(newFormData);
     }    
     
   }

@@ -61,7 +61,7 @@ function QtyCounter(props) {
   useEffect(() => {
     const newFormData = ({...formData, quantity: quantity })
     setFormData(newFormData);
-    console.log(newFormData)
+    // console.log(newFormData)
   }, [quantity]);
 
   return (

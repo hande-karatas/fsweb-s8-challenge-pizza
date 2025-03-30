@@ -51,8 +51,7 @@ function Extras(props) {
 
     //helper
     function handleChange(event) {
-        const name = event.target.name;
-        const value = event.target.value;
+        const {name, value} = event.target;
     
         let updatedExtras;
     
@@ -71,7 +70,7 @@ function Extras(props) {
         };
         setErrors(newErrors); 
         if (!newErrors.min && !newErrors.max) {
-            console.log(newFormData);
+            // console.log(newFormData);
         }           
     }
     

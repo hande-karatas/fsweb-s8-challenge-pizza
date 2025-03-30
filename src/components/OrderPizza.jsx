@@ -31,7 +31,9 @@ const FixedHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   @media (max-width: 768px) {
-      height: 15%;
+      height: 20%;
+      
+      padding-bottom: 0;
     }
   
 `;
@@ -39,7 +41,8 @@ const HeaderTextContainer = styled.div`
   width: 62vh;
   padding-bottom: 1rem;
   @media (max-width: 768px) {
-      width: 80%;
+      width: 80%;      
+      padding-bottom: .3rem;
     }
 `;
 const HeaderText = styled.h1`
@@ -59,7 +62,7 @@ const Content = styled.div`
   width: 60vh;
   padding-bottom: 5rem;
   @media (max-width: 768px) {
-      width: 60%;
+      width: 100%;
     }
 `;
 
