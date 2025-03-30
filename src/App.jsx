@@ -7,7 +7,6 @@ import { Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import Home from "./components/Home";
 import OrderPizza from "./components/OrderPizza";
 import Success from './components/Success';
-import NavController from "./components/NavController"
 
 function App() {  
 
@@ -24,7 +23,6 @@ function App() {
           <Success />
         </Route>
       </Switch>
-      {/* <NavController /> */}
     </>
   )
 }
