@@ -62,7 +62,6 @@ function GeneralSelection(props) {
     setFormData(newFormData)
     // console.log(newFormData)
   }
-
   //template
   return (
     <Wrapper>
@@ -74,7 +73,7 @@ function GeneralSelection(props) {
             </FormGroup>
             <br/>
             <FormGroup check>
-            <Input id="orta" name="size" type="radio" value="orta" onClick={handleChange} />            
+            <Input id="orta" name="size" type="radio" value="orta" onClick={handleChange} data-cy="radio"/>            
             <StyledLabel for="orta" check>Orta</StyledLabel>
             </FormGroup>
             <br/>
@@ -85,7 +84,7 @@ function GeneralSelection(props) {
         </Size>
         <DoughDiv>
           <Title>Hamur Seç<Span>*</Span></Title>
-          <Select name="dough" defaultValue="" onChange={handleChange}>
+          <Select name="dough" defaultValue="" onChange={handleChange} data-cy="select-dough">
             <Option value="" hidden>Hamur Kalınlığı</Option>
             <Option value="incecik" >İncecik</Option>
             <Option value="ince" >İnce</Option>

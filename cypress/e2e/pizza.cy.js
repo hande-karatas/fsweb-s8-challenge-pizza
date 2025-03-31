@@ -37,7 +37,7 @@ describe("order page", () => {
         it("check more than 10", () => {
             //act
             cy.get('[type="checkbox"]').check('pepperoni');
-            cy.get('[type="checkbox"]').check('tavuk izgara'); // "Izgara" değil, "ızgara"!
+            cy.get('[type="checkbox"]').check('tavuk izgara');
             cy.get('[type="checkbox"]').check('mısır');
             cy.get('[type="checkbox"]').check('sarımsak');
             cy.get('[type="checkbox"]').check('ananas');
@@ -54,20 +54,35 @@ describe("order page", () => {
 
         })
     })
-    beforeEach(() => {
-        cy.intercept('POST', 'https://reqres.in/api/pizza', {
-          statusCode: 201,
-          body: { message: 'Sipariş alındı!' },
-        }).as('submitOrder');
+    describe("submission", () => {
+              
     
-        cy.visit('http://localhost:5173/orderPizza');
-      });
-    
-      it('should submit the order when submit button is clicked', () => {
-        cy.get('[data-cy="submit-button"]').click();
-    
-        cy.wait('@submitOrder').its('response.statusCode').should('eq', 201);
-    
-        cy.location('pathname').should('eq', '/success');
-      });
+        it('should submit the order when submit button is clicked', () => {
+            //Arrange
+            cy.intercept('POST', 'https://reqres.in/api/pizza', {
+                statusCode: 201,
+                body: { message: 'Sipariş alındı!' },
+              }).as('submitOrder');          
+              cy.visit('http://localhost:5173/orderPizza');
+
+            //Act
+            cy.get('[data-cy="radio"]').first().check();
+            cy.get('[data-cy="select-dough"]').select('ince')
+
+            cy.get('[type="checkbox"]').check('pepperoni');
+            cy.get('[type="checkbox"]').check('tavuk izgara');
+            cy.get('[type="checkbox"]').check('mısır');
+            cy.get('[type="checkbox"]').check('sarımsak');
+            cy.get('[type="checkbox"]').check('ananas');
+
+            cy.get('[data-cy="input-username"]').type("hande");
+
+            cy.get('[data-cy="submit-button"]').click();
+        
+            cy.wait('@submitOrder').its('response.statusCode').should('eq', 201);
+        
+            cy.location('pathname').should('eq', '/success');
+        });
+
+    })
 })
